@@ -1,5 +1,5 @@
 $('#submit').click(function () {
-    window.location.href = "pass.html";
+    window.location.href = "pass.php";
     return false;
  });
 $('#submitPass').click(function () {
