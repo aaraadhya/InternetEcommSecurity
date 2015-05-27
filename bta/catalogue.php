@@ -1,24 +1,24 @@
 <?php
 include 'php_modules/modules.php';
-    
-//$password = $_POST['pass'];
-//
-//if(passwordCheck($password))
-//{
-//    echo "<h1>Error 404</h1>";
-//    exit();
-//}
 
-
+if(!isset($_COOKIE['sessionuid']))
+{   
+$password = $_POST['pass'];   
+if(passwordCheck($password)=="f")
+{
+    header('Location: http://bluestore.co/');
+}
+}
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 		<title>
-			BTA - Catologue
+			Blue Store
 		</title>
 
 		<!-- Javascript -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		
 		<!-- Bootstrap -->
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -33,12 +33,47 @@ include 'php_modules/modules.php';
 
 	</head>
 		<!-- HTML Body -->
-		<body bgcolor = "#6495ed">
-		<h1><i><center>Women's Collection<i></h1><p class = "one"></p>
-            
-            <?php  catalogeDisplay();  ?>
+		<body>
+
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							
+						</button>
+						<a class="navbar-brand" href="catalogue.php">
+							<img alt="Brand" src = "images/title.png" id="title">
+						</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="cart.php" id = "whiteText">Cart</a></li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id = "whiteText">Account <span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="logOutRedirect.php">Logout</a></li>
+									<li class="divider"></li>
+									<li><a href="settings.php">Account</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+
+
+			<div class = "container well">
+				<h1><i><center>Women's Collection<i></h1><p class = "one"></p>
+				<?php  catalogeDisplay();  ?>
 			</div>
+
+			<p class = "one"></p>
+			<div class="pull-right">
+				<h4>&copy;Blue Store&nbsp;&nbsp;&nbsp;&nbsp;</h4>
 			</div>
-			</div>
+			
 		</body>
 </html>

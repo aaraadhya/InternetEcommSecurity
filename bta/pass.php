@@ -4,13 +4,28 @@ include 'php_modules/modules.php';
 $user = $_POST['username'];
 $ans = $_POST['answer'];
 
+if(isset($_COOKIE['sessionuid']))
+{
+header('Location: http://bluestore.co/catalogue.php/');
+}
 
-
-if(credentialCheck($user,$ans))
+if(!isset($_COOKIE['ccookie']) && !isset($_COOKIE['sessionuid']))
+{
+   
+if(credentialCheck($user,$ans) && !isset($_POST['username']) && !isset($_POST['answer']))
 {
     echo "<h1>Error in username and/or password</h1>";
     exit();
 }
+    
+}
+else
+{
+setcookie("ccookie", $id, time() - (86400 * 30), "/");
+header('Location: http://bluestore.co/');
+    
+}
+
 
 ?>
 
@@ -18,7 +33,7 @@ if(credentialCheck($user,$ans))
 <html>
 	<head>
 		<title>
-			BTA - Store
+			Blue Store
 		</title>
 
 		<!-- Javascript -->
@@ -38,7 +53,7 @@ if(credentialCheck($user,$ans))
 	</head>
 
 	<body>
-		<div class="container">
+		<div class="container well">
 			<h2>Sign In</h2>
 			<p>&nbsp;&nbsp;</p>
 			<form action="catalogue.php" method="post">
