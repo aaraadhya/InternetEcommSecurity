@@ -18,7 +18,7 @@ if(credentialCheck($user,$ans))
 <html>
 	<head>
 		<title>
-			BTA - Store
+			Blue Store
 		</title>
 
 		<!-- Javascript -->
@@ -38,7 +38,7 @@ if(credentialCheck($user,$ans))
 	</head>
 
 	<body>
-		<div class="container">
+		<div class="container well">
 			<h2>Sign In</h2>
 			<p>&nbsp;&nbsp;</p>
 			<form action="catalogue.php" method="post">

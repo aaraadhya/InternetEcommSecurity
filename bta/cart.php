@@ -96,6 +96,11 @@
 
             </form>
         </div>
+
+        <p class = "one"></p>
+		<div class="pull-right">
+			<h4>&copy;Blue Store&nbsp;&nbsp;&nbsp;&nbsp;</h4>
+		</div>
     </body>
 <script type="text/javascript" src="scripts/script.js"></script>
 </html>
