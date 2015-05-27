@@ -73,5 +73,40 @@ function passwordCheck($pass)
 }
 
 
+function catalogeDisplay()
+{
+    $con = connect();
+    
+    $query = "select * from ArticalData";
 
+    $result = $con->query($query);
+    
+    while($row = mysqli_fetch_row($result))
+    {
+           echo ' <div class="img">
+				 <a target="_blank" href="catalogue.htm"><img src="images/'.$row[4].'" alt="2" width="110" height="90"></a>
+				 <div class="desc">Price: '.$row[2].'$ <br> ('.$row[2].'% off)</div>
+			</div>';  
+        
+    
+    }
+   
+}
+
+function insert()
+{
+    $con = connect();
+    
+ 
+    
+    for($i=22;$i<=26;$i++)
+    {
+           $r = rand(10,100);
+           $q = "INSERT INTO `bluestore`.`ArticalData` (`id`, `Name`, `Price`, `Quantity`, `Image`) VALUES (NULL, 'clothes', $r, '2', '$i.jpg')";
+        
+           $con->query($q);
+    }
+}
+
+//insert();
 ?>
