@@ -83,7 +83,14 @@ if(isset($_COOKIE['ccookie']))
                         <label for="securityQuestion">Security Question</label>
                     </div>
                     <div class="col-sm-10">
-                        <label>Your First School ?</label>
+                        <select id = "questionList" class="form-control">
+                            <option id = "0">Select Question</option>
+                            <option id = "1">What is the name of your first Pet?</option>
+                            <option id = "2">What is the last name of the teacher who gave you your first failing grade?</option>
+                            <option id = "3">What is the name of the place your wedding reception was held?</option>
+                            <option id = "4">What is the name of your first School?</option>
+                            <option id = "5">What is the name of the City you were born in?</option>
+                        </select>
                     </div>
                 </div>
 
