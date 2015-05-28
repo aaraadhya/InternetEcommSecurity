@@ -3,7 +3,7 @@
 if(isset($_COOKIE['sessionuid'])){
     setcookie("sessionuid", $id, time() - (86400 * 30), "/");
     setcookie("ccookie", $id, time() - (86400 * 30), "/");
-    header('Location: http://bluestore.co/');
+    header('Location: index.php');
 }
 
 ?>

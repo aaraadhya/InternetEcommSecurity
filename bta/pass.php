@@ -21,7 +21,7 @@ if(credentialCheck($user,$ans) && !isset($_POST['username']) && !isset($_POST['a
 }
 else
 {
-setcookie("ccookie", $id, time() - (86400 * 30), "/");
+setcookie("ccookie","", time() - (86400 * 30), "/");
 header('Location: http://bluestore.co/');
     
 }

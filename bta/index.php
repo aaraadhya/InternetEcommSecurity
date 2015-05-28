@@ -3,11 +3,11 @@
 
 if(isset($_COOKIE['sessionuid']))
 {
-    header('Location: http://localhost/InternetEcommSecurity/bta/');
-}
+    echo '<script>window.location.assign("catalogue.php")</script>';
 
 if(isset($_COOKIE['ccookie']))
     setcookie("ccookie", $id, time() - (86400 * 30), "/");
+}
 ?>
 
 <!DOCTYPE html>
