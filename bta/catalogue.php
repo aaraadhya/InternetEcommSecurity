@@ -12,6 +12,13 @@ header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 header('Pragma: no-cache'); // HTTP 1.0.
 header('Expires: 0'); // Proxies.
 }
+else
+{
+if(encrypt_decrypt('decrypt',$_COOKIE['ccookie'])!=$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']){
+header('Location: https://bluestore.co/logOutRedirect.php');
+}
+
+}
 ?>
 <!DOCTYPE html>
 <html>
