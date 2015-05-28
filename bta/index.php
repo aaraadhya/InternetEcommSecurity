@@ -74,11 +74,7 @@ if(isset($_COOKIE['ccookie']))
                         <label for="exampleInputEmail1">Username</label>
                     </div>
                     <div class="col-sm-10">
-<<<<<<< HEAD
                         <input type="text" name="username" class="form-control" id="userName" placeholder="User Name">
-=======
-                        <input type="text" name="userName" class="form-control" id="userName" placeholder="User Name">
->>>>>>> origin/master
                     </div>
                 </div>
 
@@ -87,18 +83,7 @@ if(isset($_COOKIE['ccookie']))
                         <label for="securityQuestion">Security Question</label>
                     </div>
                     <div class="col-sm-10">
-<<<<<<< HEAD
                         <label>Your First School ?</label>
-=======
-                        <select id = "questionList" class="form-control">
-                            <option id = "0">Select Question</option>
-                            <option id = "1">What is the name of your first Pet?</option>
-                            <option id = "2">What is the last name of the teacher who gave you your first failing grade?</option>
-                            <option id = "3">What is the name of the place your wedding reception was held?</option>
-                            <option id = "4">What is the name of your first School?</option>
-                            <option id = "5">What is the name of the City you were born in?</option>
-                        </select>
->>>>>>> origin/master
                     </div>
                 </div>
 
@@ -107,7 +92,7 @@ if(isset($_COOKIE['ccookie']))
                         <label for="securityAnswer">Answer</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="password" name="securityAnswer" class="form-control" id="securityAnswer" placeholder="Answer">
+                        <input type="password" name="answer" class="form-control" id="securityAnswer" placeholder="Answer">
                     </div>
                 </div>
                 <div class="col-sm-12 text-center">
