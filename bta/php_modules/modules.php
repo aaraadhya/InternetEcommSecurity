@@ -30,7 +30,7 @@ function credentialCheck($u,$q)
         
           if($stmt->num_rows > 0)
         {
-           setcookie("ccookie",encrypt_decrypt('encrypt', $id), time() + (86400 * 30), "/");
+           setcookie("ccookie",encrypt_decrypt('encrypt', $id), time() + (86400 * 30), "/",bluestore.co,null,null,true);
               return false;
         }
 
@@ -61,7 +61,7 @@ function passwordCheck($pass)
         
             if($stmt->num_rows >0)
         {
-           setcookie ("sessionuid",encrypt_decrypt('encrypt', $i), time() + (86400 * 30),"/");
+           setcookie ("sessionuid",encrypt_decrypt('encrypt', $i), time() + (86400 * 30),"/",bluestore.co,null,null,true);
               return "t";
         }
         
