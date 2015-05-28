@@ -3,10 +3,11 @@
 
 if(isset($_COOKIE['sessionuid']))
 {
-     echo '<script>window.location.assign("http://bluestore.co/catalogue.php")</script>';
+    echo '<script>window.location.assign("catalogue.php")</script>';
 
 if(isset($_COOKIE['ccookie']))
     setcookie("ccookie", $id, time() - (86400 * 30), "/");
+}
 ?>
 
 <!DOCTYPE html>
@@ -67,28 +68,28 @@ if(isset($_COOKIE['ccookie']))
         <div class="container well">
             <h2>Sign In</h2>
             <p>&nbsp;&nbsp;</p>
-            <form action="pass.php" method="post">
+            <form name="signIn" action="pass.php" onsubmit= "return validateSignInForm()" method="post">
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
                         <label for="exampleInputEmail1">Username</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="User Name">
+                        <input type="text" name="username" class="form-control" id="userName" placeholder="User Name">
                     </div>
                 </div>
 
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Security Question</label>
+                        <label for="securityQuestion">Security Question</label>
                     </div>
                     <div class="col-sm-10">
-                        <label for="exampleInputPassword1">Your First School ?</label>
+                        <label>Your First School ?</label>
                     </div>
                 </div>
 
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Answer</label>
+                        <label for="securityAnswer">Answer</label>
                     </div>
                     <div class="col-sm-10">
                         <input type="password" name="answer" class="form-control" id="securityAnswer" placeholder="Answer">

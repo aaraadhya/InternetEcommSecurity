@@ -6,24 +6,36 @@ $ans = $_POST['answer'];
 
 if(isset($_COOKIE['sessionuid']))
 {
-header('Location: http://bluestore.co/catalogue.php/');
+	 header('Location: http://bluestore.co/catalogue.php');
+	 header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
+	header('Pragma: no-cache'); // HTTP 1.0.
+	header('Expires: 0'); // 
 }
 
 if(!isset($_COOKIE['ccookie']) && !isset($_COOKIE['sessionuid']))
 {
    
-if(credentialCheck($user,$ans) && !isset($_POST['username']) && !isset($_POST['answer']))
+if(credentialCheck($user,$ans) || !isset($_POST['username']) || !isset($_POST['answer']))
 {
     echo "<h1>Error in username and/or password</h1>";
     exit();
 }
+header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
+header('Pragma: no-cache'); // HTTP 1.0.
+header('Expires: 0'); // Proxies.
     
 }
 else
 {
-setcookie("ccookie","", time() - (86400 * 30), "/");
-header('Location: http://bluestore.co/');
-    
+
+if(encrypt_decrypt('decrypt',$_COOKIE['ccookie'])==$_SERVER['REMOTE_ADDR'] && isset($_COOKIE['sessionuid'])){
+header('Location: https://bluestore.co/catalogue.php');
+}
+else{
+	setcookie("ccookie", "", time() - (86400 * 30), "/");
+ header('Location: http://bluestore.co/'); 
+}
+
 }
 
 

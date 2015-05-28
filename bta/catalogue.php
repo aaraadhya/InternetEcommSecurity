@@ -6,11 +6,15 @@ if(!isset($_COOKIE['sessionuid']))
 $password = $_POST['pass'];   
 if(passwordCheck($password)=="f")
 {
-    header('Location: http://localhost:8888/bta/');
+	//echo '<script>window.location.assign("http://bluestore.co")</script>';
+	setcookie("ccookie","", time() - (86400 * 30), "/");
+    header('Location: http://bluestore.co');
 }
 header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 header('Pragma: no-cache'); // HTTP 1.0.
 header('Expires: 0'); // Proxies.
+
+
 }
 else
 {
@@ -44,7 +48,7 @@ header('Location: https://bluestore.co/logOutRedirect.php');
 	</head>
 		<!-- HTML Body -->
 		<body>
-
+          
 			<nav class="navbar navbar-default">
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
