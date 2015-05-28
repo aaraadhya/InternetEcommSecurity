@@ -6,9 +6,13 @@ if(!isset($_COOKIE['sessionuid']))
 $password = $_POST['pass'];   
 if(passwordCheck($password)=="f")
 {
+<<<<<<< HEAD
 	//echo '<script>window.location.assign("http://bluestore.co")</script>';
 	setcookie("ccookie","", time() - (86400 * 30), "/");
     header('Location: http://bluestore.co');
+=======
+    header('Location: index.php');
+>>>>>>> origin/master
 }
 header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
 header('Pragma: no-cache'); // HTTP 1.0.

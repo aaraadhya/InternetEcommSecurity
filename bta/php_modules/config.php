@@ -6,7 +6,7 @@ function connect()
 { 
 
     // Create connection
-    $conn = new mysqli("localhost", "root","root","bluestore");
+    $conn = new mysqli("mysql.bluestore.co", "bluestore","blueSass11..","bluestoredb");
 
     // Check connection
     if ($conn->connect_error) {

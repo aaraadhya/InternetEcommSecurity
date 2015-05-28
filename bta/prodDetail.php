@@ -1,13 +1,18 @@
 <?php
+include 'php_modules/modules.php';
 
-if(isset($_COOKIE['sessionuid'])){
-    setcookie("sessionuid", $id, time() - (86400 * 30), "/");
-    setcookie("ccookie", $id, time() - (86400 * 30), "/");
+if(!isset($_COOKIE['sessionuid']))
+{   
+$password = $_POST['pass'];   
+if(passwordCheck($password)=="f")
+{
     header('Location: index.php');
 }
-
+header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
+header('Pragma: no-cache'); // HTTP 1.0.
+header('Expires: 0'); // Proxies.
+}
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,9 +31,9 @@ if(isset($_COOKIE['sessionuid'])){
         <!-- Icons provided by Glyphicons @ http://glyphicons.com/ -->
 
         <!-- Style -->
-        <link href="styles/style.css" rel="stylesheet">
-    	<!--[if IE]>
-    		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <link href="styles/product_detail.css" rel="stylesheet">
+        <!--[if IE]>
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge">
          <![endif]-->
 
      </head>
@@ -64,47 +69,9 @@ if(isset($_COOKIE['sessionuid'])){
         </nav>
 
         <div class="container well">
-            <h2>Sign In</h2>
-            <p>&nbsp;&nbsp;</p>
-            <form action="pass.php" method="post">
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-2">
-                        <label for="exampleInputEmail1">Username</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="User Name">
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Security Question</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <label for="exampleInputPassword1">Your First School ?</label>
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Answer</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <input type="password" name="answer" class="form-control" id="securityAnswer" placeholder="Answer">
-                    </div>
-                </div>
-                <div class="col-sm-12 text-center">
-                    <input type="submit" class="btn btn-default" value="submit" />
-                </div>
-                <p>&nbsp;</p>
-
-                <div class = "pull-right">
-                    <a href="forgotPassword.html"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Forgot Password?</a>
-                    <br/>
-                    <a href="signup.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;New User? Sign Up!</a>
-                </div>
-
-            </form>
+            <div class = "col-sm-12">
+                <?php productDetailDisplay(); ?>
+            </div>
         </div>
     </body>
 <script type="text/javascript" src="scripts/script.js"></script>

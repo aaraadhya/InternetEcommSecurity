@@ -1,8 +1,8 @@
 <?php
 include 'php_modules/modules.php';
     
-$user = $_POST['username'];
-$ans = $_POST['answer'];
+$user = $_POST['userName'];
+$ans = $_POST['securityAnswer'];
 
 if(isset($_COOKIE['sessionuid']))
 {
@@ -68,10 +68,10 @@ else{
 		<div class="container well">
 			<h2>Sign In</h2>
 			<p>&nbsp;&nbsp;</p>
-			<form action="catalogue.php" method="post">
+			<form name="passForm" action="catalogue.php" onSubmit="return validatePassForm()" method="post">
  	 			<div class="form-group col-sm-12">
  	 				<div class="col-sm-2">
- 	 					<label for="exampleInputEmail1">Password</label>
+ 	 					<label for="pass">Password</label>
  	 				</div>
     				<div class="col-sm-10">
     					<input type="password" name="pass" class="form-control"  placeholder="Password">
