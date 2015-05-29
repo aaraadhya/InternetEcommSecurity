@@ -64,73 +64,80 @@ if(isset($_POST['fname']))
         <div class="container well">
             <h2>Sign In</h2>
             <p>&nbsp;&nbsp;</p>
-            <form action="signup.php" method="post">
+            <form name="signUpForm" action="pass.php" onsubmit= "return validateSignUpForm();" method="post">
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputEmail1">First Name</label>
+                        <label for="firstName">First Name</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="text" name="fname" class="form-control" id="firstName" placeholder="First Name">
+                        <input type="text" name="firstName" class="form-control" id="firstName" placeholder="First Name">
                     </div>
                 </div>
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputEmail1">Last Name</label>
+                        <label for="lastName">Last Name</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="text" name="lname" class="form-control" id="lastName" placeholder="Last Name">
+                        <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Last Name">
                     </div>
                 </div>
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputEmail1">Email Id</label>
+                        <label for="emailId">Email Id</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="text" name="email" class="form-control" id="emailId" placeholder="johndoe@example.com">
+                        <input type="text" name="emailId" class="form-control" id="emailId" placeholder="johndoe@example.com">
                     </div>
                 </div>
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputEmail1">Username</label>
+                        <label for="userName">Username</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="text" name="uname" class="form-control" id="userName" placeholder="User Name">
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Your First School ?</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <input type="text" name="squestion" class="form-control" id="securityQuestion" placeholder="Security Question">
+                        <input type="text" name="userName" class="form-control" id="userName" placeholder="User Name">
                     </div>
                 </div>
 
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Answer</label>
+                        <label for="securityQuestion">Security Question</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="password" name="sanswer" class="form-control" id="securityAnswer" placeholder="Answer">
+                        <select name = "securityQuestion" id = "questionList" class="form-control">
+                            <option id = "0">Select Question</option>
+                            <option id = "1">What is the name of your first Pet?</option>
+                            <option id = "2">What is the last name of the teacher who gave you your first failing grade?</option>
+                            <option id = "3">What is the name of the place your wedding reception was held?</option>
+                            <option id = "4">What is the name of your first School?</option>
+                            <option id = "5">What is the name of the City you were born in?</option>
+                        </select>
                     </div>
                 </div>
 
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label for="securityAnswer">Answer</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" name="securityAnswer" class="form-control" id="securityAnswer" placeholder="Answer">
                     </div>
                 </div>
 
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Confirm Password</label>
+                        <label for="pass">Password</label>
                     </div>
                     <div class="col-sm-10">
-                        <input type="password" name="cpassword" class="form-control" id="confPassword" placeholder="Confirm Password">
+                        <input type="password" name="pass" class="form-control" id="pass" placeholder="Password">
+                    </div>
+                </div>
+
+                <div class="form-group col-sm-12">
+                    <div class="col-sm-2">
+                        <label for="confPass">Confirm Password</label>
+                    </div>
+                    <div class="col-sm-10">
+                        <input type="password" name="confPass" class="form-control" id="confPass" placeholder="Confirm Password">
                     </div>
                 </div>
 
@@ -140,9 +147,7 @@ if(isset($_POST['fname']))
                 <p>&nbsp;</p>
 
                 <div class = "pull-right">
-                    <a href="forgotPassword.html"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Forgot Password?</a>
-                    <br/>
-                    <a href="signup.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;New User? Sign Up!</a>
+                    <a href="index.php"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Already a user?Sign In!</a>
                 </div>
 
             </form>

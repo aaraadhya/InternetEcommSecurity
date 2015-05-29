@@ -32,6 +32,12 @@ function validateSignInForm() {
     	}
 	}
 
+    var y = document.forms["signIn"]["securityQuestion"].value;
+    if (y == null || y == "" || y == "Select Question") {
+        alert("Security Question must be selected");
+        return false;
+    }
+
     var y = document.forms["signIn"]["securityAnswer"].value;
     if (y == null || y == "") {
         alert("Name must be filled out");
@@ -57,6 +63,12 @@ function validateSignUpForm() {
     var x = document.forms["signUpForm"]["firstName"].value;
     if (x == null || x == "") {
         alert("First Name must be filled out");
+        return false;
+    }
+
+    var y = document.forms["signUpForm"]["securityQuestion"].value;
+    if (y == null || y == "" || y == "Select Question") {
+        alert("Security Question must be selected");
         return false;
     }
 
