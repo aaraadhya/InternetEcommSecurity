@@ -85,7 +85,7 @@ function catalogeDisplay()
     while($row = mysqli_fetch_row($result))
     {
            echo ' <div class="img">
-				 <a target="_blank" href="catalogue.html/id='.$row[0].'"><img src="images/'.$row[4].'" alt="2" width="110" height="90"></a>
+				 <a target="_blank" href="prodDetail.php?id='.$row[0].'"><img src="images/'.$row[4].'" alt="2" width="110" height="90"></a>
 				 <div class="desc">Price: '.$row[2].'$ <br> ('.$row[2].'% off)</div>
 			</div>';  
         
@@ -100,12 +100,12 @@ function productDetailDisplay(){
     $con = connect();
     
     $stmt = $con->prepare("select * from ArticalData where id=?");
-    $stmt->bind_param("ss",$id);
+    $stmt->bind_param("s",$id);
     $stmt->execute();
 
     $result = $stmt->get_result();
     
-    while($row = mysqli_fetch_row($result))
+    while($row = $result->fetch_assoc())
     {
         $tempString = '<div class = "col-sm-4 image">
                 <img src="images/'.$row[4].'">
