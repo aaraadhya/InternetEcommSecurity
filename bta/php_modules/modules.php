@@ -2,6 +2,17 @@
 
 include 'config.php';
 
+if(isset($_POST['action'])){
+    if($_POST['action']=="addToCart"){
+        echo "added to cart";
+        addToCart($_POST["id"], $_POST["qty"]);
+    }
+
+    else if($_POST['action']=="checkout"){
+    echo "checkout";
+    checkout();
+}
+}
 
 function credentialCheck($u,$q)
 {
@@ -85,7 +96,7 @@ function catalogeDisplay()
     while($row = mysqli_fetch_row($result))
     {
            echo ' <div class="img">
-				 <a target="_blank" href="prodDetail.php?id='.$row[0].'"><img src="images/'.$row[4].'" alt="2" width="110" height="90"></a>
+				 <a href="prodDetail.php?id='.$row[0].'"><img src="images/'.$row[4].'" alt="2" width="110" height="90"></a>
 				 <div class="desc">Price: '.$row[2].'$ <br> ('.$row[2].'% off)</div>
 			</div>';  
         
@@ -105,39 +116,16 @@ function productDetailDisplay(){
 
     $result = $stmt->get_result();
     
-    while($row = $result->fetch_assoc())
+    while($row = $result->fetch_array())
     {
-        $tempString = '<div class = "col-sm-4 image">
-                <img src="images/'.$row[4].'">
-            </div>
-            <div class = "col-sm-8 text">
-                <div class="col-sm-12">
-                    <h4>'.$row[1].'</h4>
-                    <p>'.$row[5].'</p>
-                </div>
-                <div class="col-sm-12">
-                    <div class="col-sm-4">
-                        <div class="col-sm-5">
-                            <label>Qty:</label>
-                        </div>
-                        <div class = "col-sm-6">
-                            <select class="form-control">';
-                for ($i=0; $i < $row[3]; $i++) { 
-                    $num = $row[3]+1;
-                    $tempString += '<option>'.$num.'</option>';
-                }
-            $tempString += '</select>
-                        </div>
-                    </div>
-                    <div class="col-sm-8">
-                        <button type="button" class="btn btn-info">Add to Cart</button>
-                    </div>
-                </div>
-            </div>';  
+        $num = 0;
+        echo '<div class = "col-sm-4 image"><img src="images/'.$row[4].'"></div><div class = "col-sm-8 text"><div class="col-sm-12"><h4>'.$row[1].'</h4><p>'.$row[5].'</p></div><div class="col-sm-12"><div class="col-sm-4"><div class="col-sm-5"><label>Qty:</label></div><div class = "col-sm-6"><select id="qtySelected" class="form-control">';
+        for ($i=0; $i < $row[3]; $i++) { 
+            $num = $i+1;
+            echo'<option value ='.$num.'>'.$num.'</option>';
+        }
+        echo '</select></div></div><div class="col-sm-8"><button id="addToCart" type="button" class="btn btn-info" onclick="addToCart('.$row[0].','.$num.')">Add to Cart</button></div></div></div>'; 
 
-            echo $tempString;
-        
-    
     }
 }
 
@@ -163,6 +151,14 @@ function encrypt_decrypt($action, $string) {
     }
 
     return $output;
+}
+
+function addToCart($itemid, $qty){
+    //Do something to add to cart here
+}
+
+function checkout(){
+    //Do something to remove from cart here
 }
 
 function insert()

@@ -7,7 +7,50 @@ $('#submitPass').click(function () {
     return false;
 });
 
+function addToCart(id, qty) {
+    alert("Infuntcion");
+    $.ajax({
+            url: "https://localhost/InternetEcommSecurity/bta/.php",
+            async: false,
+            type: "POST",
+            dataType: "json",
+            data: {"action" : 'addToCart', "id" : id, "qty" : qty},
+            success: function(result){
+                alert(result);
+                alert("Added to cart! Click on the cart to view your items");
+            },
+            error: function(result){
+                    alert(result);
+                    alert("There was an error adding items");
+            }
+    });
 
+    return;
+};
+
+function checkout() {
+    $.ajax({
+            url: "https://localhost/InternetEcommSecurity/bta/.php",
+            async: false,
+            type: "POST",
+            dataType: "json",
+            data: {"action" : 'checkout'},
+            success: function(result){
+                alert(result);
+                alert("Checked out");
+            },
+            error: function(result){
+                    alert("There was an error adding items");
+            }
+    });
+
+    return;
+};
+
+$('#checkOutBtn').click(function () {
+    window.location.href= "checkout.html";
+    return false;
+});
 
 function validateSignInForm() {
     var x = document.forms["signIn"]["userName"].value;

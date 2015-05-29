@@ -54,47 +54,24 @@
         </nav>
 
         <div class="container well">
-            <h2>Sign In</h2>
-            <p>&nbsp;&nbsp;</p>
-            <form action="pass.php" method="post">
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-2">
-                        <label for="exampleInputEmail1">Username</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <input type="text" name="username" class="form-control" id="exampleInputEmail1" placeholder="User Name">
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Security Question</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <label for="exampleInputPassword1">Your First School ?</label>
-                    </div>
-                </div>
-
-                <div class="form-group col-sm-12">
-                    <div class="col-sm-2">
-                        <label for="exampleInputPassword1">Answer</label>
-                    </div>
-                    <div class="col-sm-10">
-                        <input type="password" name="answer" class="form-control" id="securityAnswer" placeholder="Answer">
-                    </div>
-                </div>
-                <div class="col-sm-12 text-center">
-                    <input type="submit" class="btn btn-default" value="submit" />
-                </div>
-                <p>&nbsp;</p>
-
-                <div class = "pull-right">
-                    <a href="forgotPassword.html"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Forgot Password?</a>
-                    <br/>
-                    <a href="signup.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;New User? Sign Up!</a>
-                </div>
-
-            </form>
+            <table class="table table-striped">
+                <tr>
+                    <td><img src="images/1.jpg" alt="2" width="110" height="90"></td>
+                    <td>Name Here</td>
+                    <td> QTY: 1</td>
+                </tr>
+                <tr>
+                    <td><img src="images/1.jpg" alt="2" width="110" height="90"></td>
+                    <td>Name Here</td>
+                    <td> QTY: 1</td>
+                </tr>
+                <tr>
+                    <td><img src="images/1.jpg" alt="2" width="110" height="90"></td>
+                    <td>Name Here</td>
+                    <td> QTY: 1</td>
+                </tr>
+            </table>
+            <button id="checkOutBtn" type="button" class="btn btn-info" onclick="checkout()">Checkout</button>
         </div>
 
         <p class = "one"></p>
