@@ -1,8 +1,8 @@
 <?php
 include 'php_modules/modules.php';
     
-$user = $_POST['userName'];
-$ans = $_POST['securityAnswer'];
+$user = $_POST['username'];
+$ans = $_POST['answer'];
 
 if(isset($_COOKIE['sessionuid']))
 {
