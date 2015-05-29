@@ -39,7 +39,7 @@ function checkout() {
             error: function(result){
             }
     });
-    window.location.href= "checkout.html";
+    window.location.href= "checkout.php";
     return;
 };
 
