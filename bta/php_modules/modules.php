@@ -4,12 +4,10 @@ include 'config.php';
 
 if(isset($_POST['action'])){
     if($_POST['action']=="addToCart"){
-        echo "added to cart";
         addToCart($_POST["id"], $_POST["qty"]);
     }
 
     else if($_POST['action']=="checkout"){
-    echo "checkout";
     checkout();
 }
 }
@@ -105,7 +103,7 @@ function catalogeDisplay()
    
 }
 
-function createUser($fname,$lname,$uname,$email,$pass,$answer)
+function createUser($uname,$fname,$lname,$email,$pass,$answer)
 {
     $con = connect();
     
@@ -114,11 +112,11 @@ function createUser($fname,$lname,$uname,$email,$pass,$answer)
     $i=4;
 $stmt = $con->prepare("INSERT INTO userData (userName, FirstName, LastName, Email,Password,Personal_ans,qid) VALUES (?,?,?,?,?, ?, ?)");
  
-$stmt->bind_param('ssssssd',$fname,$lname,$uname,$email,$pass,$answer,$i);;   
+$stmt->bind_param('ssssssd',$uname,$fname,$lname,$email,$pass,$answer,$i);;   
 
 $stmt->execute();
 
-echo "Successfully Created";
+    echo '<script>window.location.assign("https://bluestore.co/index.php")</script>';
 exit();
 }
 
@@ -172,10 +170,60 @@ function encrypt_decrypt($action, $string) {
 
 function addToCart($itemid, $qty){
     //Do something to add to cart here
+    $i = encrypt_decrypt('decrypt', $_COOKIE['sessionuid']);
+    $con = connect();
+    $stmt = $con->prepare("INSERT INTO Cart (UserId, ItemId, Quantity) VALUES(?,?,?)");
+    $stmt->bind_param("sss",$i, $itemid, $qty);
+    $stmt->execute();
+
+}
+
+function showCart(){
+    $con = connect();
+    if( $stmt = $con->prepare("select * from Cart where UserId=?"))
+    {   
+        
+        $i = encrypt_decrypt('decrypt', $_COOKIE['sessionuid']);
+        
+        $stmt->bind_param("s",$i);
+   
+        $re = $stmt->execute();
+
+        $result = $stmt->get_result();
+        while($row = $result->fetch_array())
+        {
+            $stmt1 = $con->prepare("select Name, Image from ArticalData where Id=?");
+            $stmt1->bind_param("s",$row[1]);
+            $stmt1->execute();
+
+            $result1= $stmt1->get_result();
+            $res = $result1->fetch_array();
+            $Name = $res[0];
+            $Image = $res[1];
+            echo '<tr><td><img src="images/'.$Image.'" alt="2" width="110" height="90"></td><td>';
+            echo $Name.'</td><td> QTY:';
+            echo $row[2].'</td>';
+        }
+       // echo sha1(1);
+    }
 }
 
 function checkout(){
-    //Do something to remove from cart here
+    $con = connect();
+    if( $stmt = $con->prepare("delete from Cart where UserId=?"))
+    {   
+        
+        $i = encrypt_decrypt('decrypt', $_COOKIE['sessionuid']);
+        
+        $stmt->bind_param("s",$i);
+   
+        $re = $stmt->execute();
+
+        if($re){
+            echo "<h1>ALL CHECKED OUT!</h1>";
+        }
+       // echo sha1(1);
+    }
 }
 
 function insert()

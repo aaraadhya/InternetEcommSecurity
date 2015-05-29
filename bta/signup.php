@@ -4,7 +4,7 @@ if($_POST['firstName']!="" && $_POST['lastName']!="" && $_POST['emailId']!="" &&
 {
  
 if($_POST['pass']==$_POST['confPass'])
-createUser($_POST['firstName'],$_POST['lastName'],$_POST['emailId'],$_POST['userName'],$_POST['securityAnswer'],$_POST['confPass']);
+createUser($_POST['userName'],$_POST['firstName'],$_POST['lastName'],$_POST['emailId'],$_POST['confPass'], $_POST['securityAnswer']);
 else
 echo "Password do not match";
 exit();

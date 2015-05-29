@@ -1,3 +1,29 @@
+<?php
+include 'php_modules/modules.php';
+
+if(!isset($_COOKIE['sessionuid']))
+{   
+$password = $_POST['pass'];   
+if(passwordCheck($password)=="f")
+{
+    //echo '<script>window.location.assign("http://bluestore.co")</script>';
+    setcookie("ccookie","", time() - (86400 * 30), "/");
+    header('Location: index.php');
+}
+header('Cache-Control: no-cache, no-store, must-revalidate'); // HTTP 1.1.
+header('Pragma: no-cache'); // HTTP 1.0.
+header('Expires: 0'); // Proxies.
+
+
+}
+else
+{
+if(encrypt_decrypt('decrypt',$_COOKIE['ccookie'])!=$_SERVER['REMOTE_ADDR'].$_SERVER['HTTP_USER_AGENT']){
+header('Location: https://bluestore.co/logOutRedirect.php');
+}
+
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -55,21 +81,7 @@
 
         <div class="container well">
             <table class="table table-striped">
-                <tr>
-                    <td><img src="images/1.jpg" alt="2" width="110" height="90"></td>
-                    <td>Name Here</td>
-                    <td> QTY: 1</td>
-                </tr>
-                <tr>
-                    <td><img src="images/1.jpg" alt="2" width="110" height="90"></td>
-                    <td>Name Here</td>
-                    <td> QTY: 1</td>
-                </tr>
-                <tr>
-                    <td><img src="images/1.jpg" alt="2" width="110" height="90"></td>
-                    <td>Name Here</td>
-                    <td> QTY: 1</td>
-                </tr>
+                <? showCart() ?>
             </table>
             <button id="checkOutBtn" type="button" class="btn btn-info" onclick="checkout()">Checkout</button>
         </div>

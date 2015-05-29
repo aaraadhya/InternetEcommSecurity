@@ -8,20 +8,18 @@ $('#submitPass').click(function () {
 });
 
 function addToCart(id, qty) {
-    alert("Infuntcion");
+    var qty1 = $('#qtySelected').val();
     $.ajax({
-            url: "https://localhost/InternetEcommSecurity/bta/.php",
+            url: "https://bluestore.co/php_modules/modules.php",
             async: false,
             type: "POST",
             dataType: "json",
-            data: {"action" : 'addToCart', "id" : id, "qty" : qty},
+            data: {"action" : 'addToCart', "id" : id, "qty" : qty1},
             success: function(result){
-                alert(result);
                 alert("Added to cart! Click on the cart to view your items");
             },
-            error: function(result){
-                    alert(result);
-                    alert("There was an error adding items");
+            complete: function(result){
+                    alert("Added to cart! Click on the cart to view your items");
             }
     });
 
@@ -30,27 +28,21 @@ function addToCart(id, qty) {
 
 function checkout() {
     $.ajax({
-            url: "https://localhost/InternetEcommSecurity/bta/.php",
+            url: "https://bluestore.co/php_modules/modules.php",
             async: false,
             type: "POST",
             dataType: "json",
             data: {"action" : 'checkout'},
-            success: function(result){
-                alert(result);
+            complete: function(result){
                 alert("Checked out");
             },
             error: function(result){
-                    alert("There was an error adding items");
             }
     });
-
+    window.location.href= "checkout.html";
     return;
 };
 
-$('#checkOutBtn').click(function () {
-    window.location.href= "checkout.html";
-    return false;
-});
 
 function validateSignInForm() {
     var x = document.forms["signIn"]["userName"].value;

@@ -101,7 +101,7 @@ if(isset($_COOKIE['sessionuid'])){
                 <div class = "pull-right">
                     <a href="forgotPassword.html"><span class="glyphicon glyphicon-info-sign"></span>&nbsp;&nbsp;&nbsp;Forgot Password?</a>
                     <br/>
-                    <a href="signup.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;New User? Sign Up!</a>
+                    <a href="signup.php"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;New User? Sign Up!</a>
                 </div>
 
             </form>
