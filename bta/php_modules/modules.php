@@ -105,6 +105,23 @@ function catalogeDisplay()
    
 }
 
+function createUser($fname,$lname,$uname,$email,$pass,$answer)
+{
+    $con = connect();
+    
+    //INSERT INTO `bluestore`.`userData` (`id`, `userName`, `FirstName`, `LastName`, `Email`, `Password`, `Personal_ans`, `qid`) VALUES (NULL, 'tduggi', 'Surya', 'Teja', 'suryateja008@gmail.com', 'pass123', 'pass123', '4')
+   
+    $i=4;
+$stmt = $con->prepare("INSERT INTO userData (userName, FirstName, LastName, Email,Password,Personal_ans,qid) VALUES (?,?,?,?,?, ?, ?)");
+ 
+$stmt->bind_param('ssssssd',$fname,$lname,$uname,$email,$pass,$answer,$i);;   
+
+$stmt->execute();
+
+echo "Successfully Created";
+exit();
+}
+
 function productDetailDisplay(){
 
     $id = $_GET['id'];

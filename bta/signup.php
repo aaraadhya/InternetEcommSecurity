@@ -1,8 +1,13 @@
 <?php
-
-if(isset($_POST['fname']))
+include 'php_modules/modules.php';
+if($_POST['firstName']!="" && $_POST['lastName']!="" && $_POST['emailId']!="" && $_POST['userName']!="" && $_POST['securityAnswer']!="" && $_POST['pass']!="" && $_POST['confPass']!="")
 {
- echo $_POST['fname'];
+ 
+if($_POST['pass']==$_POST['confPass'])
+createUser($_POST['firstName'],$_POST['lastName'],$_POST['emailId'],$_POST['userName'],$_POST['securityAnswer'],$_POST['confPass']);
+else
+echo "Password do not match";
+exit();
 }
 
 ?>
@@ -64,7 +69,7 @@ if(isset($_POST['fname']))
         <div class="container well">
             <h2>Sign In</h2>
             <p>&nbsp;&nbsp;</p>
-            <form name="signUpForm" action="pass.php" onsubmit= "return validateSignUpForm();" method="post">
+            <form name="signUpForm" action="signup.php" onsubmit= "return validateSignUpForm();" method="post">
                 <div class="form-group col-sm-12">
                     <div class="col-sm-2">
                         <label for="firstName">First Name</label>
